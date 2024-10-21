@@ -55,24 +55,31 @@ class PacoteViagem:
             print('Erro.')
 
     #“atualizarPacote”: recebe como parâmetro o ID do pacote e alguma (ou toda) informação que se deseja atualizar. Fica a seu critério escolher quais dados deverão ser atualizados.
-    def atualizarPacote(self, id, change):
+    def atualizarPacote(self, id):
         conexao = self.conexao()
-        consulta = conexao.cursor()
-        if change == 'destino' or change == 'Destino' or change == 1:
-            destino = input('Informe o seu novo destino: ')
-            sql = "UPDATE pacotes SET destino = ? WHERE id = ?"
-            campos = (destino, id)
-            consulta.execute(sql, campos)
-        elif change == 'preco' or change == 'Preco' or change == 2:
-            preco = input('Informe o novo preço: ')
-            sql = "UPDATE pacotes SET preco = ? WHERE id = ?"
-            campos = (preco, id)
-            consulta.execute(sql, campos)
-        elif change == 'descricao' or change == 'Descricao' or change == 3:
-            descricao = input('Informe uma nova descrição do destino: ')
-            sql = "UPDATE descricao SET preco = ? WHERE id = ?"
-            campos = (descricao, id)
-            consulta.execute(sql, campos)
+        consulta = conexao.cursor()            
+        if consulta.rowcount >= 1:
+            print('-> Campos para mudança:\n1.Destino\n2.Preço\n3.Descricao')
+            change = int(input('Informe o campo escolhido: '))
+            if change == 'destino' or change == 'Destino' or change == 1:
+                destino = input('Informe o seu novo destino: ')
+                sql = "UPDATE pacotes SET destino = ? WHERE id = ?"
+                campos = (destino, id)
+                consulta.execute(sql, campos)
+
+            elif change == 'preco' or change == 'Preco' or change == 2:
+                preco = input('Informe o novo preço: ')
+                sql = "UPDATE pacotes SET preco = ? WHERE id = ?"
+                campos = (preco, id)
+                consulta.execute(sql, campos)
+
+            elif change == 'descricao' or change == 'Descricao' or change == 3:
+                descricao = input('Informe uma nova descrição do destino: ')
+                sql = "UPDATE pacotes SET descricao = ? WHERE id = ?"
+                campos = (descricao, id)
+                consulta.execute(sql, campos)
+        else:
+            print('Erro.')
         conexao.commit()
         conexao.close()
         
@@ -82,6 +89,11 @@ class PacoteViagem:
         consulta = conexao.cursor()
         sql = 'SELECT * FROM pacotes'
         consulta.execute(sql)
-        resultado = consulta.fetchall(id)
-        print(resultado)
+        if consulta.rowcount >= 1:
+            for linha in consulta.fetchall():
+                if id == linha[0]:
+                    print('Pacote: ',linha)
+        else:
+            print('Erro.')
+        conexao.commit()
         conexao.close()

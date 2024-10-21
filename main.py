@@ -12,6 +12,7 @@ while opcao != 6:
         preco = float(input('Preço do Pacote: '))
         descricao = input('Descreva o destino: ')
         pacote.cadastrarPacote(destino, preco, descricao)
+        print('===============')
     elif opcao == 2:
         print('===', 'Pacotes:')
         pacote.consultarPacotes()
@@ -21,18 +22,20 @@ while opcao != 6:
         pacote.consultarPacotes()
         id = int(input('Informe o Id do Pacote: '))
         pacote.deletarPacote(id)
+        print('===============')
     elif opcao == 4:
         print('Pacotes:')
         pacote.consultarPacotes()
         id = int(input('Informe o Id do Pacote: '))
-        print('-> Campos para mudança:\n1.Destino\n2.Preço\n3.Descricao')
-        opcaoChange = int(input('Informe o campo escolhido: '))
-        pacote.atualizarPacote(id, opcaoChange)
+        pacote.atualizarPacote(id)
+        print('===============')
     elif opcao == 5:
         print('Pacotes:')
         pacote.consultarPacotes()
         id = int(input('Informe o Id do Pacote: '))
-        pacote.consultarPacoteIndividual()
+        pacote.consultarPacoteIndividual(id)
+        print('===============')
     elif opcao == 6:
+        print('===============')
         break
 print('Seja Sempre Bem-Vindo(a)!')
