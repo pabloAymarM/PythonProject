@@ -63,19 +63,19 @@ class PacoteViagem:
             change = int(input('Informe o campo escolhido: '))
             if change == 'destino' or change == 'Destino' or change == 1:
                 destino = input('Informe o seu novo destino: ')
-                sql = "UPDATE pacotes SET destino = ? WHERE id = ?"
+                sql = 'UPDATE pacotes SET destino = ? WHERE id = ?'
                 campos = (destino, id)
                 consulta.execute(sql, campos)
 
             elif change == 'preco' or change == 'Preco' or change == 2:
                 preco = input('Informe o novo preço: ')
-                sql = "UPDATE pacotes SET preco = ? WHERE id = ?"
+                sql = 'UPDATE pacotes SET preco = ? WHERE id = ?'
                 campos = (preco, id)
                 consulta.execute(sql, campos)
 
             elif change == 'descricao' or change == 'Descricao' or change == 3:
                 descricao = input('Informe uma nova descrição do destino: ')
-                sql = "UPDATE pacotes SET descricao = ? WHERE id = ?"
+                sql = 'UPDATE pacotes SET descricao = ? WHERE id = ?'
                 campos = (descricao, id)
                 consulta.execute(sql, campos)
         else:
@@ -87,12 +87,15 @@ class PacoteViagem:
     def consultarPacoteIndividual(self, id):
         conexao = self.conexao()
         consulta = conexao.cursor()
-        sql = 'SELECT * FROM pacotes'
-        consulta.execute(sql)
         if consulta.rowcount >= 1:
-            for linha in consulta.fetchall():
-                if id == linha[0]:
-                    print('Pacote: ',linha)
+            sql = 'SELECT * FROM pacotes WHERE id = ?'
+            campos = (id,)
+            consulta.execute(sql, campos)
+            resultado = consulta.fetchall()
+            print(resultado)
+            #for linha in consulta.fetchall():
+            #   if id == linha[0]:
+            #       print('Pacote: ',linha)
         else:
             print('Erro.')
         conexao.commit()
