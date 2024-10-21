@@ -1,0 +1,27 @@
+'''
+Projeto Final
+Gerenciamento de Agência de Viagem
+Contexto:
+Você foi contratado para desenvolver um sistema de gerenciamento de uma agência de viagens. O sistema precisa ser capaz de cadastrar pacotes de viagem, armazenar informações sobre as viagens.
+Desenvolva um programa em Python que utilize os conceitos de programação orientada a objetos e banco de dados para gerenciar a agência de viagens.
+
+Orientações:
+Crie um repositório no github, o nome do repositório ficará a seu critério.
+Crie um banco de dados chamado “agencia_db” e em seguida crie a seguinte tabela: “pacotes” com os campos: id, destino, preço e descrição.
+Crie uma classe chamada “PacoteViagem” que represente um pacote de viagem oferecido pela agência. Cada pacote deve ter os seguintes atributos: destino, preço e descrição. Essa classe será responsável por interagir com o banco de dados para realizar operações relacionadas aos pacotes.
+Implemente os seguintes métodos na classe “PacoteViagem”:
+- “cadastrarPacote”: recebe como parâmetros o destino, preço e descrição de um pacote e insere um novo pacote no banco de dados.
+- “consultarPacotes”: recupera todos os pacotes cadastrados no banco de dados e imprime as informações de cada pacote (destino, preço e descrição).
+- “deletarPacote”: recebe como parâmetro o ID do pacote e, caso o pacote exista, deve ser mostrada uma mensagem de sucesso. Caso contrário, deve ser exibida uma mensagem de erro.
+- “atualizarPacote”: recebe como parâmetro o ID do pacote e alguma (ou toda) informação que se deseja atualizar. Fica a seu critério escolher quais dados deverão ser atualizados.
+- “consultarPacoteIndividual”: recebe como parâmetro o código do pacote e recupera apenas esse registro da tabela e exibe todas as informações apenas do item que possui esse ID, ou seja, será feita uma consulta no banco utilizando o código como filtro para retornar um único item da tabela.
+
+Faça todas as validações necessárias para que os dados sejam passados de forma correta.
+Após implementar a classe e seus métodos, em outro arquivo, crie um algoritmo que mostre ao usuário um menu com informações para cadastrar, consultar, etc.
+Esse sistema deve implementar a criação de objeto para utilizar os métodos da classe de forma a deixar o sistema organizado. O algoritmo deverá ser executado até que o usuário escolha a opção “sair”.
+Ao final, o seu repositório do github deverá conter:
+- Um relatório descrevendo o que cada integrante fez.
+- Arquivos em Python com os códigos de implementação do projeto.
+
+🚨 A entrega deverá ser o link do repositório do github 🚨
+'''
