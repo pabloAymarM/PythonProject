@@ -38,7 +38,7 @@ class PacoteViagem:
         consulta.execute(sql)
         resultado = consulta.fetchall()
         for itens in resultado:
-            print(f'Id: {itens[0]}, Nome: {itens[1]}')
+            print(f'Id: {itens[0]}, Destino: {itens[1]}')
         conexao.close()
 
     #“deletarPacote”: recebe como parâmetro o ID do pacote e, caso o pacote exista, deve ser mostrada uma mensagem de sucesso. Caso contrário, deve ser exibida uma mensagem de erro.
@@ -57,8 +57,9 @@ class PacoteViagem:
     #“atualizarPacote”: recebe como parâmetro o ID do pacote e alguma (ou toda) informação que se deseja atualizar. Fica a seu critério escolher quais dados deverão ser atualizados.
     def atualizarPacote(self, id):
         conexao = self.conexao()
-        consulta = conexao.cursor()            
-        if consulta.rowcount >= 1:
+        consulta = conexao.cursor() 
+        print(consulta.rowcount)           
+        if consulta.rowcount <= 1:
             print('-> Campos para mudança:\n1.Destino\n2.Preço\n3.Descricao')
             change = int(input('Informe o campo escolhido: '))
             if change == 'destino' or change == 'Destino' or change == 1:
@@ -87,12 +88,13 @@ class PacoteViagem:
     def consultarPacoteIndividual(self, id):
         conexao = self.conexao()
         consulta = conexao.cursor()
-        if consulta.rowcount >= 1:
+        if consulta.rowcount <= 1:
             sql = 'SELECT * FROM pacotes WHERE id = ?'
             campos = (id,)
             consulta.execute(sql, campos)
             resultado = consulta.fetchall()
-            print(resultado)
+            for itens in resultado:
+                print(f'Id: {itens[0]}, Destino: {itens[1]}, Preço: {itens[2]}, Descrição: {itens[3]}')
             #for linha in consulta.fetchall():
             #   if id == linha[0]:
             #       print('Pacote: ',linha)
