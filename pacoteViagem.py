@@ -57,8 +57,7 @@ class PacoteViagem:
     #“atualizarPacote”: recebe como parâmetro o ID do pacote e alguma (ou toda) informação que se deseja atualizar. Fica a seu critério escolher quais dados deverão ser atualizados.
     def atualizarPacote(self, id):
         conexao = self.conexao()
-        consulta = conexao.cursor() 
-        print(consulta.rowcount)           
+        consulta = conexao.cursor()         
         if consulta.rowcount <= 1:
             print('-> Campos para mudança:\n1.Destino\n2.Preço\n3.Descricao')
             change = int(input('Informe o campo escolhido: '))
