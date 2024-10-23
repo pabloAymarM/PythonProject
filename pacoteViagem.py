@@ -53,7 +53,6 @@ class PacoteViagem:
             print('Deletado com sucesso.')
         else:
             print('Erro.')
-        import sqlite3
 
     #“atualizarPacote”: recebe como parâmetro o ID do pacote e alguma (ou toda) informação que se deseja atualizar. Fica a seu critério escolher quais dados deverão ser atualizados.
     def atualizarPacote(self, id):
